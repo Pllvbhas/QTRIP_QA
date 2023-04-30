@@ -1,6 +1,7 @@
 
 package qtriptest.pages;
 
+import qtriptest.SeleniumWrapper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -27,15 +28,19 @@ public class AdventureDetailsPage {
     }
 
     public void bookAdventure(String Name, String date, String numOfPersons) throws InterruptedException {
-        GuestName.sendKeys(Name);
+        SeleniumWrapper.sendKeys(GuestName, Name);
+        // GuestName.sendKeys(Name);
         Thread.sleep(1000);
         // use handling of calenders
-       selectDate.sendKeys(date);
+        SeleniumWrapper.sendKeys(selectDate, date);
+       //selectDate.sendKeys(date);
        Thread.sleep(1000);
-       personCount.clear();
-        personCount.sendKeys(numOfPersons);
+       SeleniumWrapper.sendKeys(personCount, numOfPersons);
+    //    personCount.clear();
+    //     personCount.sendKeys(numOfPersons);
         Thread.sleep(1000);
-        reserve_button.click();
+        SeleniumWrapper.click(reserve_button, driver);
+        //reserve_button.click();
 
     }
 

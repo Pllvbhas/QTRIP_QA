@@ -1,6 +1,7 @@
 
 package qtriptest.pages;
 
+import qtriptest.SeleniumWrapper;
 import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -22,7 +23,8 @@ public class HistoryPage {
     public void getReservations() throws InterruptedException{
         Thread.sleep(4000);
     WebElement reservation_button = driver.findElement(By.linkText("Reservations"));
-    reservation_button.click();
+    // reservation_button.click();
+    SeleniumWrapper.click(reservation_button, driver);
     }
     public void  gettransactionid(){
         WebElement transactionID = driver.findElement(By.xpath("//tr//th[@scope='row']"));
@@ -34,7 +36,8 @@ public class HistoryPage {
       WebElement adventurename =  driver.findElement(By.xpath("//tr//td[2]"));
       advName = adventurename.getText();
       WebElement cancel = driver.findElement(By.xpath("//button[@class='cancel-button']"));
-      cancel.click();
+      SeleniumWrapper.click(cancel, driver);
+      //cancel.click();
      // Thread.sleep(2000);
       //WebElement transactionID = driver.findElement(By.xpath("//tr//th[@scope='row']"));
       WebDriverWait wait1 = new WebDriverWait(driver, 10);

@@ -1,5 +1,6 @@
 package qtriptest.pages;
 
+import qtriptest.SeleniumWrapper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -26,15 +27,17 @@ public class HomePage {
         PageFactory.initElements(new AjaxElementLocatorFactory(driver,20), this);
     }
     public void navigateToHomePage() throws InterruptedException {
-        if (!driver.getCurrentUrl().equals(this.url)) {
-            driver.get(this.url);
-        }
+        SeleniumWrapper.NavigatetoURL(driver, url);
+        // if (!driver.getCurrentUrl().equals(this.url)) {
+        //     driver.get(this.url);
+        // }
 
         Thread.sleep(2000);
     }
     public void clickRegister() {
         try {
-            register_button.click();
+           // register_button.click();
+           SeleniumWrapper.click(register_button, driver);
         } catch (Exception e) {
             //TODO: handle exception
             System.out.println("exception found" + e.getMessage());
@@ -56,7 +59,8 @@ public class HomePage {
         try {
             WebDriverWait wait = new WebDriverWait(driver, 20);
             wait.until(ExpectedConditions.elementToBeClickable(logOut_button));
-            logOut_button.click();
+            SeleniumWrapper.click(logOut_button, driver);
+           // logOut_button.click();
            
         } catch (Exception e) {
             //TODO: handle exception
@@ -66,8 +70,9 @@ public class HomePage {
     }
     public void searchCity(String cityName) {
         try {
-        searct_textbox.clear();
-        searct_textbox.sendKeys(cityName);
+        // searct_textbox.clear();
+        // searct_textbox.sendKeys(cityName);
+        SeleniumWrapper.sendKeys(searct_textbox, cityName);
         Thread.sleep(2000);
         } catch (Exception e) {
             //TODO: handle exception
@@ -90,7 +95,8 @@ public class HomePage {
         try {
            // WebElement autocomplete_text  = driver.findElement(By.xpath("//ul//a/li"));
 
-            autocomplete_text.click();
+           // autocomplete_text.click();
+           SeleniumWrapper.click(autocomplete_text, driver);
             Thread.sleep(2000);
         } catch (Exception e) {
             //TODO: handle exception
@@ -98,8 +104,5 @@ public class HomePage {
         }
 
     }
-
-
-
 
 }

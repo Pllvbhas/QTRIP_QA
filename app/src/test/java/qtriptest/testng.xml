@@ -5,19 +5,20 @@
     <!-- <packages> 
             <package name="qtriptest.tests"></package>
     </packages> -->
-        <classes>          
-                <groups>  
+    <groups>  
                         <run>  
-                        <include name="Login Flow"/> 
+                        <include name="Login Flow"/>  
                         <include name="Search and Filter flow"/>  
                         <include name="Booking and Cancellation Flow"/> 
                         <include name="Reliability Flow"/>   
                         </run>  
-                </groups> 
+   </groups> 
+        <classes>          
+               
                 <class name="qtriptest.tests.testCase_01"></class>
                 <class name="qtriptest.tests.testCase_02"></class>
                 <class name="qtriptest.tests.testCase_03"></class>               
-                <class name="qtriptest.tests.testCase_04"></class>               
+                <class name="qtriptest.tests.testCase_04"></class>             
         </classes>
-  </test> <!-- Test -->
-</suite> <!-- Suite -->
+  </test>
+ </suite>

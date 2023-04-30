@@ -1,5 +1,6 @@
 package qtriptest.pages;
 
+import qtriptest.SeleniumWrapper;
 import java.util.UUID;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -28,9 +29,10 @@ public class RegisterPage {
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, 20), this);
     }
     public void navigateToRegisterPage() {
-        if (!driver.getCurrentUrl().equals(this.url)) {
-            driver.get(this.url);
-        }
+        SeleniumWrapper.NavigatetoURL(driver, url);
+        // if (!driver.getCurrentUrl().equals(this.url)) {
+        //     driver.get(this.url);
+        // }
     }
     public boolean registerNewuser(String userName, String password, String confirmPassword,
             boolean generateRandomUsername) throws InterruptedException {
@@ -49,16 +51,20 @@ public class RegisterPage {
         // {
         // testdata_username = userName;
         // }
-        username_Textbox.clear();
-        username_Textbox.sendKeys(testdata_username);
+        // username_Textbox.clear();
+        // username_Textbox.sendKeys(testdata_username);
+        SeleniumWrapper.sendKeys(username_Textbox, testdata_username);
         Thread.sleep(2000);
-        password_Textbox.clear();
-        password_Textbox.sendKeys(password);
+        SeleniumWrapper.sendKeys(password_Textbox, password);
+        // password_Textbox.clear();
+        // password_Textbox.sendKeys(password);
         Thread.sleep(2000);
-        confirm_password_Textbox.clear();
-        confirm_password_Textbox.sendKeys(confirmPassword);
+        SeleniumWrapper.sendKeys(confirm_password_Textbox, confirmPassword);
+        //confirm_password_Textbox.clear();
+        // confirm_password_Textbox.sendKeys(confirmPassword);
         Thread.sleep(2000);
-        registerUser_button.click();
+        SeleniumWrapper.click(registerUser_button, driver);
+       // registerUser_button.click();
 
         Thread.sleep(2000);
         this.lastGeneratedUsername = testdata_username;

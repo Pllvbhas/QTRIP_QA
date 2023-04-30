@@ -1,5 +1,6 @@
 package qtriptest.pages;
 
+import qtriptest.SeleniumWrapper;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -20,20 +21,24 @@ public class LoginPage {
         PageFactory.initElements(new AjaxElementLocatorFactory(driver,20), this);
     }
     public void navigateToLoginPage(){
-        if(!this.driver.getCurrentUrl().equals(this.url)){
-            this.driver.get(this.url);
-        }
+        // if(!this.driver.getCurrentUrl().equals(this.url)){
+        //     this.driver.get(this.url);
+        // }
+        SeleniumWrapper.NavigatetoURL(driver, url);
     }
     public void performLogIn(String userName, String password) throws InterruptedException{
-        username_Textbox.clear();
-        username_Textbox.sendKeys(userName);
-        password_Textbox.clear();
-        password_Textbox.sendKeys(password);
-        logIN_button.click();
+        // username_Textbox.clear();
+        // username_Textbox.sendKeys(userName);
+        SeleniumWrapper.sendKeys(username_Textbox, userName);
+        // password_Textbox.clear();
+        // password_Textbox.sendKeys(password);
+        SeleniumWrapper.sendKeys(password_Textbox, password);
+        // logIN_button.click();
+        SeleniumWrapper.click(logIN_button, driver);
         Thread.sleep(3000);
         // WebDriverWait wait = new WebDriverWait(driver, 10);
         // wait.until(ExpectedConditions.visibilityOf(logOut_button));
-        System.out.println("user logged in successfully");
+//System.out.println("user logged in successfully");
        
     }
     // public void logOutuser(){

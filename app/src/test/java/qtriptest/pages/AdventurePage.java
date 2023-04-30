@@ -1,5 +1,6 @@
 package qtriptest.pages;
 
+import qtriptest.SeleniumWrapper;
 import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -32,7 +33,8 @@ public class AdventurePage {
         //    wait.until(ExpectedConditions.elementToBeClickable(duration_filter));
            Thread.sleep(2000);
             Select dropdown = new Select(duration_filter);
-            duration_filter.click();
+            SeleniumWrapper.click(duration_filter, driver);
+            // duration_filter.click();
             
         dropdown.selectByVisibleText(duration);
        
@@ -42,7 +44,8 @@ public class AdventurePage {
        
             Thread.sleep(2000);
             Select category_dropdown = new Select(category);
-            category.click();
+            SeleniumWrapper.click(category, driver);
+            //category.click();
             category_dropdown.selectByVisibleText(addCategory);
             
 
@@ -63,11 +66,12 @@ public class AdventurePage {
 
     }
     public void clearFilters(){
-        clearDuratioElement.click();
-        try {
-            clearDuratioElement.click();
+       
+        //clearDuratioElement.click();
+        try { 
+            SeleniumWrapper.click(clearDuratioElement, driver);
             Thread.sleep(2000);
-            clearCategoryElement.click();
+            SeleniumWrapper.click(clearCategoryElement, driver);
         } catch (InterruptedException e) {
             // TODO Auto-generated catch block
             System.out.println("exception found" + e.getMessage());
@@ -85,13 +89,12 @@ public class AdventurePage {
     }
     public boolean selectAdventure(String nameOfAdventure) throws InterruptedException{
         // boolean selected = true;
-       searchAdventures_filter.sendKeys(nameOfAdventure);
+        SeleniumWrapper.sendKeys(searchAdventures_filter, nameOfAdventure);
+      // searchAdventures_filter.sendKeys(nameOfAdventure);
        Thread.sleep(2000);
-       adventureToBeSelected.click();
-       //Create object of the Actions class
-    //    Actions actions = new Actions(driver);
-    //    actions.keyDown(Keys.ENTER);
-    //    actions.keyUp(Keys.ENTER);
+       SeleniumWrapper.click(adventureToBeSelected, driver);
+       //adventureToBeSelected.click();
+    
        return true;
        
     //    WebDriverWait wait = new WebDriverWait(driver,30);
